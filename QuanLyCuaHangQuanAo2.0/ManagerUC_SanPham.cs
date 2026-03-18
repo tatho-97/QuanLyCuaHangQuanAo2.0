@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BaiTapLon.BUS;
+using BaiTapLon.DAO;
+using BTL_QuanLyKhoHang_Nhom20;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,32 @@ namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class ManagerUC_SanPham : UserControl
     {
+        private BindingSource bindingSource = new BindingSource();
         public ManagerUC_SanPham()
         {
             InitializeComponent();
+        }
+
+        private void ManagerUC_SanPham_Load(object sender, EventArgs e)
+        {
+            cboTimKiem.Items.Add("Tên sản phẩm");
+            cboTimKiem.Items.Add("ID");
+            cboTimKiem.Items.Add("Loại");
+            cboTimKiem.Items.Add("Giá tiền");
+
+            cboTimKiem.SelectedIndex = 0;
+
+            bindingSource.DataSource = ProductBUS.Instance.GetAllProducts();
+            dataGridView1.DataSource = bindingSource.DataSource;
+        }
+
+        private void btTimKiem_Click(object sender, EventArgs e)
+        {
+            string type = cboTimKiem.Text;
+            string keyword = tbTimKiem.Text;
+            List<Product> results = ProductBUS.Instance.SearchProducts(type, keyword);
+            bindingSource.DataSource = results;
+            dataGridView1.DataSource = bindingSource.DataSource;
         }
     }
 }
