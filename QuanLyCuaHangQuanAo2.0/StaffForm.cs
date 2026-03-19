@@ -17,18 +17,30 @@ namespace QuanLyCuaHangQuanAo2._0
             InitializeComponent();
         }
         Button before;
+        public Button taohoaDon()
+        {
+            return btnTaoHoaDon;
+        }
+        public List<Product_selected> product_Selecteds = new List<Product_selected>();
+        public StaffUC_Trangchu ucTrangChu;
+        public StaffUC_SanPham ucSanPham;
+        public UC_TaoHoaDon ucTaoHoaDon;
+        public UC_ThongKeHoaDon ucThongKeHD;
+        public UC_ThongKeDoanhThu ucThongKeDT;
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
-            panelBody.Controls.Clear();
-            uc.Dock = DockStyle.Fill;
-            panelBody.Controls.Add(uc);
-
+            if (!panelBody.Controls.Contains(uc))
+            {
+                uc.Dock = DockStyle.Fill;
+                panelBody.Controls.Add(uc);
+            }
+            uc.BringToFront();
             Button check = sender as Button;
             if (check == null) return;
-
             // reset button cũ
             if (before != null)
             {
+
                 if (before.Text == "Trang chủ")
                 {
                     btnTrangChu.BackColor = Color.FromArgb(166, 124, 82);
@@ -95,26 +107,36 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            chonUC(new StaffUC_Trangchu(),sender, e);
+            if (ucTrangChu == null)
+                ucTrangChu = new StaffUC_Trangchu();
+            chonUC(ucTrangChu, sender, e);
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            chonUC(new StaffUC_SanPham(),sender,e);
+            if (ucSanPham == null)
+                ucSanPham = new StaffUC_SanPham();
+            chonUC(ucSanPham, sender, e);
         }
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_TaoHoaDon (), sender, e);
+            if (ucTaoHoaDon == null)
+                ucTaoHoaDon = new UC_TaoHoaDon();
+            chonUC(ucTaoHoaDon, sender, e);
         }
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_ThongKeHoaDon(), sender, e);
+            if (ucThongKeHD == null)
+                ucThongKeHD = new UC_ThongKeHoaDon();
+            chonUC(ucThongKeHD, sender, e);
         }
 
         private void btnThongKeDT_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_ThongKeDoanhThu(), sender, e);
+            if (ucThongKeDT == null)
+                ucThongKeDT = new UC_ThongKeDoanhThu();
+            chonUC(ucThongKeDT, sender, e);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

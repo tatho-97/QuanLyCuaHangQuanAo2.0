@@ -86,8 +86,11 @@ namespace BaiTapLon.DAO
 
         public bool UpdateProduct(Product product)
         {
-            string query = "UPDATE products SET is_selected = @pic, product_name = @name, product_categoryName = @category, " +
-                           "product_size = @size, product_sellingPrice = @sell, product_importPrice = @import, " +
+            string query = "UPDATE products SET " +
+                           "product_name = @name, " +
+                           "product_size = @size, " +
+                           "product_sellingPrice = @sell, " +
+                           "product_importPrice = @import, " +
                            "product_stockQuantity = @stock " +
                            "WHERE product_id = @id";
             using (SQLiteConnection conn = DataProvider.GetConnection())
@@ -102,7 +105,6 @@ namespace BaiTapLon.DAO
                     cmd.Parameters.AddWithValue("@sell", product.Product_sellingPrice);
                     cmd.Parameters.AddWithValue("@import", product.Product_importPrice);
                     cmd.Parameters.AddWithValue("@stock", product.Product_stockQuantity);
-
                     conn.Open();
                     int result = cmd.ExecuteNonQuery();
                     return result > 0;

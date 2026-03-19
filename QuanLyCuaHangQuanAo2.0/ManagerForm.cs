@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BaiTapLon.BUS;
+using BaiTapLon.DAO;
+using BTL_QuanLyKhoHang_Nhom20;
 namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class ManagerForm : Form
@@ -16,12 +18,27 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             InitializeComponent();
         }
+        public List<Product_selected> product_Selecteds = new List<Product_selected>();
         Button before;
+        public ManagerUC_TrangChu ucTrangChu;
+        public ManagerUC_SanPham ucSanPham;
+        public UC_TaoHoaDon ucTaoHoaDon;
+        public UC_ThongKeHoaDon ucThongKeHD;
+        public UC_ThongKeDoanhThu ucThongKeDT;
+        public ManagerUC_QuanLyNV ucQuanLyNV;
+        public ManagerUC_NhapSP ucNhapSP;
+        public Button taohoaDon()
+        {
+            return btnTaoHoaDon;
+        }
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
-            panelBody.Controls.Clear();
-            uc.Dock = DockStyle.Fill;
-            panelBody.Controls.Add(uc);
+            if (!panelBody.Controls.Contains(uc))
+            {
+                uc.Dock = DockStyle.Fill;
+                panelBody.Controls.Add(uc);
+            }
+            uc.BringToFront();
             Button check = sender as Button;
             if (check == null) return;
             // reset button cũ
@@ -114,41 +131,51 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            chonUC(new ManagerUC_TrangChu(), sender, e);
+            if (ucTrangChu == null) 
+                ucTrangChu = new ManagerUC_TrangChu(); 
+            chonUC(ucTrangChu, sender, e);
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            chonUC(new ManagerUC_SanPham(), sender, e);
+            if (ucSanPham == null)
+                ucSanPham = new ManagerUC_SanPham(); 
+            chonUC(ucSanPham, sender, e);
         }
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_TaoHoaDon(), sender, e);
+            if (ucTaoHoaDon == null)
+                ucTaoHoaDon = new UC_TaoHoaDon(); 
+            chonUC(ucTaoHoaDon, sender, e);
         }
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_ThongKeHoaDon(), sender, e);
+            if (ucThongKeHD == null)
+                ucThongKeHD = new UC_ThongKeHoaDon();
+            chonUC(ucThongKeHD, sender, e);
         }
 
         private void btnThongKeDT_Click(object sender, EventArgs e)
         {
-            chonUC(new UC_ThongKeDoanhThu(), sender, e);
+            if (ucThongKeDT == null)
+                ucThongKeDT = new UC_ThongKeDoanhThu(); 
+            chonUC(ucThongKeDT, sender, e);
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void btnQuanLyNV_Click(object sender, EventArgs e)
         {
-            chonUC(new ManagerUC_QuanLyNV(), sender, e);
+            if (ucQuanLyNV == null) 
+                ucQuanLyNV = new ManagerUC_QuanLyNV();
+            chonUC(ucQuanLyNV, sender, e);
         }
 
         private void btnNhapSP_Click(object sender, EventArgs e)
         {
-            chonUC(new ManagerUC_NhapSP(), sender, e);
+            if (ucNhapSP == null)
+                ucNhapSP = new ManagerUC_NhapSP(); 
+            chonUC(ucNhapSP, sender, e);
         }
 
         private void btnThoat_Click_1(object sender, EventArgs e)

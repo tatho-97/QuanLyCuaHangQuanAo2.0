@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace BTL_QuanLyKhoHang_Nhom20
 {
-    internal class Product
+    public class Product
     {
         [DisplayName("Thêm thanh toán")]
         public bool Is_selected { get; set; }

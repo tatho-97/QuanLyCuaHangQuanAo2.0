@@ -287,7 +287,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Controls.Add(this.panelHead);
             this.Name = "ManagerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Managerform";
+            this.Text = "ManagerForm";
             this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.panelHead.ResumeLayout(false);
             this.panelHead.PerformLayout();

@@ -38,10 +38,6 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.btTimKiem = new System.Windows.Forms.Button();
             this.tbTimKiem = new System.Windows.Forms.TextBox();
@@ -139,7 +135,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            this.Column8.Width = 111;
+            this.Column8.Width = 90;
             // 
             // Column1
             // 
@@ -148,7 +144,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column1.HeaderText = "số lượng bán";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
-            this.Column1.Width = 109;
+            this.Column1.Width = 88;
             // 
             // Column9
             // 
@@ -159,45 +155,6 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column9.Name = "Column9";
             this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column9.Width = 150;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(682, 38);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(258, 22);
-            this.dateTimePicker1.TabIndex = 4;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(682, 79);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(258, 22);
-            this.dateTimePicker2.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(563, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Ngày bắt đầu";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(563, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 17);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Ngày kết thúc";
             // 
             // comboBox3
             // 
@@ -256,10 +213,6 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.btTimKiem);
             this.Controls.Add(this.tbTimKiem);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "UC_ThongKeDoanhThu";
             this.Size = new System.Drawing.Size(1026, 515);
@@ -272,10 +225,6 @@ namespace QuanLyCuaHangQuanAo2._0
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Button btTimKiem;
         private System.Windows.Forms.TextBox tbTimKiem;

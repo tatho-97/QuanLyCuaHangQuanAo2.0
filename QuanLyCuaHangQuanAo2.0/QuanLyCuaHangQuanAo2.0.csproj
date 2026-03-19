@@ -133,6 +133,12 @@
     <Compile Include="DTO\Role.cs" />
     <Compile Include="DTO\Supplier.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="FormSuaSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSuaSanPham.Designer.cs">
+      <DependentUpon>FormSuaSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,13 @@
     <Compile Include="ManagerUC_TrangChu.Designer.cs">
       <DependentUpon>ManagerUC_TrangChu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhapSoLuongChon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapSoLuongChon.Designer.cs">
+      <DependentUpon>NhapSoLuongChon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Product_selected.cs" />
     <Compile Include="StaffForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +220,9 @@
     <Compile Include="UC_ThongKeHoaDon.Designer.cs">
       <DependentUpon>UC_ThongKeHoaDon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormSuaSanPham.resx">
+      <DependentUpon>FormSuaSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManagerUC_TrangChu.resx">
       <DependentUpon>ManagerUC_TrangChu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapSoLuongChon.resx">
+      <DependentUpon>NhapSoLuongChon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>

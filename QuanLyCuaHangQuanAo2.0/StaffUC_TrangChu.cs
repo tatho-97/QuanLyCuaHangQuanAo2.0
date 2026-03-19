@@ -16,30 +16,53 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             InitializeComponent();
         }
+        private StaffForm LayFormCha()
+        {
+            return (StaffForm)this.FindForm();
+        }
         private void MoUC(UserControl uc, object sender, EventArgs e)
         {
-            StaffForm a = (StaffForm)this.FindForm();
+            StaffForm a = LayFormCha();
             a.chonUC(uc,sender,e);
         }
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            MoUC(new StaffUC_SanPham(), sender, e);
+            StaffForm a = LayFormCha();
+            if(a.ucSanPham == null)
+            {
+                a.ucSanPham = new StaffUC_SanPham();
+            }
+            MoUC(a.ucSanPham, sender, e);
         }
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-
-            MoUC(new UC_TaoHoaDon(), sender, e);
+            StaffForm a = LayFormCha();
+            if(a.ucTaoHoaDon == null)
+            {
+                a.ucTaoHoaDon = new UC_TaoHoaDon();
+            }
+            MoUC(a.ucTaoHoaDon, sender, e);
         }
 
         private void btnThongKeSP_Click(object sender, EventArgs e)
         {
-            MoUC(new UC_ThongKeDoanhThu(), sender, e);
+            StaffForm a = LayFormCha();
+            if(a.ucThongKeDT==null)
+            {
+                a.ucThongKeDT = new UC_ThongKeDoanhThu();
+            }
+            MoUC(a.ucThongKeDT, sender, e);
         }
 
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            MoUC(new UC_ThongKeHoaDon(), sender, e);
+            StaffForm a = LayFormCha();
+            if(a.ucThongKeHD==null)
+            {
+                a.ucThongKeHD = new UC_ThongKeHoaDon();
+            }
+            MoUC(a.ucThongKeHD, sender, e);
         }
     }
 }

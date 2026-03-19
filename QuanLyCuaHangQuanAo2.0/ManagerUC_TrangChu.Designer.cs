@@ -161,6 +161,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Controls.Add(this.btnSanPham);
             this.Name = "ManagerUC_TrangChu";
             this.Size = new System.Drawing.Size(1026, 515);
+            this.Load += new System.EventHandler(this.ManagerUC_TrangChu_Load);
             this.ResumeLayout(false);
 
         }

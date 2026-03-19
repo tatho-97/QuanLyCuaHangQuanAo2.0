@@ -16,7 +16,7 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManagerForm());
+            Application.Run(new StaffForm());
         }
     }
 }

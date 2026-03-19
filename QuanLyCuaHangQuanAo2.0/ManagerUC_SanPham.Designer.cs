@@ -42,6 +42,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -65,6 +66,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column4,
             this.Column5,
             this.Column7,
+            this.Column6,
             this.Column8,
             this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(0, 162);
@@ -72,8 +74,11 @@ namespace QuanLyCuaHangQuanAo2._0
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1026, 352);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
             // 
             // cboTimKiem
             // 
@@ -112,6 +117,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.button1.TabIndex = 16;
             this.button1.Text = "Tạo hóa đơn";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.TaoHoaDon);
             // 
             // button2
             // 
@@ -122,6 +128,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.button2.TabIndex = 20;
             this.button2.Text = "Sửa sản phẩm";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.btnSuaSanPham_Click);
             // 
             // button3
             // 
@@ -143,7 +150,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Is_selected.Name = "Is_selected";
             this.Is_selected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Is_selected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Is_selected.Width = 90;
+            this.Is_selected.Width = 97;
             // 
             // Column2
             // 
@@ -191,6 +198,13 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.HeaderText = "Giá nhập";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            // 
             // Column8
             // 
             this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -206,7 +220,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Column1.HeaderText = "số lượng chọn";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
-            this.Column1.Width = 83;
+            this.Column1.Width = 88;
             // 
             // ManagerUC_SanPham
             // 
@@ -244,6 +258,7 @@ namespace QuanLyCuaHangQuanAo2._0
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }

@@ -178,6 +178,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.button1.TabIndex = 23;
             this.button1.Text = "Tạo hóa đơn";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -189,6 +190,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.button2.TabIndex = 24;
             this.button2.Text = "Hủy tạo hóa đơn";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -242,6 +244,7 @@ namespace QuanLyCuaHangQuanAo2._0
             this.Controls.Add(this.dataGridView1);
             this.Name = "UC_TaoHoaDon";
             this.Size = new System.Drawing.Size(1026, 515);
+            this.Load += new System.EventHandler(this.UC_TaoHoaDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
