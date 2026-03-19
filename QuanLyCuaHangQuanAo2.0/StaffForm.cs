@@ -27,6 +27,8 @@ namespace QuanLyCuaHangQuanAo2._0
         public UC_TaoHoaDon ucTaoHoaDon;
         public UC_ThongKeHoaDon ucThongKeHD;
         public UC_ThongKeDoanhThu ucThongKeDT;
+        public string ten;
+        public int id;
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
             if (!panelBody.Controls.Contains(uc))
@@ -103,6 +105,8 @@ namespace QuanLyCuaHangQuanAo2._0
             home.Dock = DockStyle.Fill;
             before = btnTrangChu;
             panelBody.Controls.Add(home);
+            textBox1.Text = ten;
+            textBox2.Text = id.ToString();
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)

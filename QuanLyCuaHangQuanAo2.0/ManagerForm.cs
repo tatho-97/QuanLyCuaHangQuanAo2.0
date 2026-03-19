@@ -27,10 +27,13 @@ namespace QuanLyCuaHangQuanAo2._0
         public UC_ThongKeDoanhThu ucThongKeDT;
         public ManagerUC_QuanLyNV ucQuanLyNV;
         public ManagerUC_NhapSP ucNhapSP;
+        public string ten;
+        public int id;
         public Button taohoaDon()
         {
             return btnTaoHoaDon;
         }
+        
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
             if (!panelBody.Controls.Contains(uc))
@@ -127,6 +130,8 @@ namespace QuanLyCuaHangQuanAo2._0
             home.Dock = DockStyle.Fill;
             before = btnTrangChu;
             panelBody.Controls.Add(home);
+            textBox1.Text = ten;
+            textBox2.Text = id.ToString();
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
