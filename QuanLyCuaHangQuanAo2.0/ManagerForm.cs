@@ -1,15 +1,10 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BaiTapLon.BUS;
-using BaiTapLon.DAO;
-using BTL_QuanLyKhoHang_Nhom20;
+using QuanLyCuaHangQuanAo2._0.BUS;
+using QuanLyCuaHangQuanAo2._0.DTO;
 namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class ManagerForm : Form
@@ -36,12 +31,9 @@ namespace QuanLyCuaHangQuanAo2._0
         
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
-            if (!panelBody.Controls.Contains(uc))
-            {
-                uc.Dock = DockStyle.Fill;
-                panelBody.Controls.Add(uc);
-            }
-            uc.BringToFront();
+            uc.Dock = DockStyle.Fill;
+            panelBody.Controls.Clear();
+            panelBody.Controls.Add(uc);
             Button check = sender as Button;
             if (check == null) return;
             // reset button cũ
@@ -150,37 +142,27 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            if (ucTaoHoaDon == null)
-                ucTaoHoaDon = new UC_TaoHoaDon(); 
-            chonUC(ucTaoHoaDon, sender, e);
+            chonUC(new UC_TaoHoaDon(), sender, e);
         }
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            if (ucThongKeHD == null)
-                ucThongKeHD = new UC_ThongKeHoaDon();
-            chonUC(ucThongKeHD, sender, e);
+            chonUC(new UC_ThongKeHoaDon(), sender, e);
         }
 
         private void btnThongKeDT_Click(object sender, EventArgs e)
         {
-            if (ucThongKeDT == null)
-                ucThongKeDT = new UC_ThongKeDoanhThu(); 
-            chonUC(ucThongKeDT, sender, e);
+            chonUC(new UC_ThongKeDoanhThu(), sender, e);
         }
 
 
         private void btnQuanLyNV_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyNV == null) 
-                ucQuanLyNV = new ManagerUC_QuanLyNV();
-            chonUC(ucQuanLyNV, sender, e);
+            chonUC(new ManagerUC_QuanLyNV(), sender, e);
         }
 
         private void btnNhapSP_Click(object sender, EventArgs e)
         {
-            if (ucNhapSP == null)
-                ucNhapSP = new ManagerUC_NhapSP(); 
-            chonUC(ucNhapSP, sender, e);
+            chonUC(new ManagerUC_NhapSP(), sender, e);
         }
 
         private void btnThoat_Click_1(object sender, EventArgs e)

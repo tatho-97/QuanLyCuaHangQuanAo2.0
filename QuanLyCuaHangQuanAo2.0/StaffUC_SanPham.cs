@@ -1,14 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BTL_QuanLyKhoHang_Nhom20;
-using BaiTapLon.BUS;
+using QuanLyCuaHangQuanAo2._0.BUS;
+using QuanLyCuaHangQuanAo2._0.DTO;
 namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class StaffUC_SanPham : UserControl
@@ -69,7 +63,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 if (isChecked)
                 {
-                    NhapSoLuongChon slc = new NhapSoLuongChon();
+                    FormNhapSoLuongChon slc = new FormNhapSoLuongChon();
                     string tenSP = row.Cells[2].Value.ToString();
                     int soluongton = Convert.ToInt32(row.Cells[7].Value);
                     slc.soluongton = soluongton;

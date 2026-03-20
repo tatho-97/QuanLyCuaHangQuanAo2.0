@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangQuanAo2._0
 {
-    public partial class NhapSoLuongChon : Form
+    public partial class FormNhapSoLuongChon : Form
     {
 
-        public NhapSoLuongChon()
+        public FormNhapSoLuongChon()
         {
             InitializeComponent();
         }
@@ -38,6 +38,13 @@ namespace QuanLyCuaHangQuanAo2._0
             if(a>soluongton)
             {
                 MessageBox.Show("Nhập quá số lượng");
+                textBox1.Clear();
+                textBox1.Focus();
+                return;
+            }
+            if(a==0)
+            {
+                MessageBox.Show("Chọn >0");
                 textBox1.Clear();
                 textBox1.Focus();
                 return;

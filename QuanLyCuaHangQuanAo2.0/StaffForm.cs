@@ -31,13 +31,11 @@ namespace QuanLyCuaHangQuanAo2._0
         public int id;
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
-            if (!panelBody.Controls.Contains(uc))
-            {
-                uc.Dock = DockStyle.Fill;
-                panelBody.Controls.Add(uc);
-            }
-            uc.BringToFront();
+            uc.Dock = DockStyle.Fill;
+            panelBody.Controls.Clear();
+            panelBody.Controls.Add(uc);
             Button check = sender as Button;
+            if (check == null) return;
             if (check == null) return;
             // reset button cũ
             if (before != null)
@@ -125,22 +123,16 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            if (ucTaoHoaDon == null)
-                ucTaoHoaDon = new UC_TaoHoaDon();
-            chonUC(ucTaoHoaDon, sender, e);
+            chonUC(new UC_TaoHoaDon(), sender, e);
         }
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            if (ucThongKeHD == null)
-                ucThongKeHD = new UC_ThongKeHoaDon();
-            chonUC(ucThongKeHD, sender, e);
+            chonUC(new UC_ThongKeHoaDon(), sender, e);
         }
 
         private void btnThongKeDT_Click(object sender, EventArgs e)
         {
-            if (ucThongKeDT == null)
-                ucThongKeDT = new UC_ThongKeDoanhThu();
-            chonUC(ucThongKeDT, sender, e);
+            chonUC(new UC_ThongKeDoanhThu(), sender, e);
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

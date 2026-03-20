@@ -1,17 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BTL_QuanLyKhoHang_Nhom20;
-using BTL_QuanLyKhoHang_Nhom20.DTO;
-using BaiTapLon.DAO;
-namespace BaiTapLon.BUS
+﻿using System.Collections.Generic;
+using QuanLyCuaHangQuanAo2._0.DTO;
+using QuanLyCuaHangQuanAo2._0.DAO;
+
+namespace QuanLyCuaHangQuanAo2._0.BUS
 {
-    internal class EmployeeBUS
+    public class EmployeeBUS
     {
-        private static EmployeeBUS instance = new EmployeeBUS();
-        public static EmployeeBUS Instance { get {return instance; } }
-        public List<Employee> GetAllEmployee() { return EmployeeDAO.Instance.GetAllEmployee(); }
+        private static EmployeeBUS instance;
+
+        public static EmployeeBUS Instance
+        {
+            get { if (instance == null) instance = new EmployeeBUS(); return instance; }
+        }
+
+        private EmployeeBUS() { }
+
+        public List<Employee> GetAllEmployee()
+        {
+            return EmployeeDAO.Instance.GetAllEmployee();
+        }
+
+        public List<Employee> SearchEmployee(string searchType, string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                return GetAllEmployee();
+            }
+            return EmployeeDAO.Instance.SearchEmployee(searchType, keyword);
+        }
     }
 }

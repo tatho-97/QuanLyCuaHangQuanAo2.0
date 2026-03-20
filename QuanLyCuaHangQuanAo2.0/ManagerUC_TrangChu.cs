@@ -32,12 +32,7 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucTrangChu == null)
-            {
-                fCha.ucTrangChu = new ManagerUC_TrangChu();
-            }
-            MoUC(fCha.ucTrangChu, sender, e);
+            MoUC(new ManagerUC_TrangChu(), sender, e);
         }
 
         private void btnSanPham_Click(object sender, EventArgs e)
@@ -52,52 +47,27 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucTaoHoaDon == null)
-            {
-                fCha.ucTaoHoaDon = new UC_TaoHoaDon();
-            }
-            MoUC(fCha.ucTaoHoaDon, sender, e);
+            MoUC(new UC_TaoHoaDon(), sender, e);
         }
 
         private void btnThongKeSP_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucThongKeDT == null)
-            {
-                fCha.ucThongKeDT = new UC_ThongKeDoanhThu();
-            }
-            MoUC(fCha.ucThongKeDT, sender, e);
+            MoUC(new UC_ThongKeDoanhThu(), sender, e);
         }
 
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucThongKeHD == null)
-            {
-                fCha.ucThongKeHD = new UC_ThongKeHoaDon();
-            }
-            MoUC(fCha.ucThongKeHD, sender, e);
+            MoUC(new UC_ThongKeHoaDon(), sender, e);
         }
 
         private void btnQuanLyNV_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucQuanLyNV == null)
-            {
-                fCha.ucQuanLyNV = new ManagerUC_QuanLyNV();
-            }
-            MoUC(fCha.ucQuanLyNV, sender, e);
+            MoUC(new ManagerUC_QuanLyNV(), sender, e);
         }
 
         private void btnNhapSP_Click(object sender, EventArgs e)
         {
-            ManagerForm fCha = LayFormCha();
-            if (fCha.ucNhapSP == null)
-            {
-                fCha.ucNhapSP = new ManagerUC_NhapSP();
-            }
-            MoUC(fCha.ucNhapSP, sender, e);
+            MoUC(new ManagerUC_NhapSP(), sender, e);
         }
         private void ManagerUC_TrangChu_Load(object sender, EventArgs e)
         {

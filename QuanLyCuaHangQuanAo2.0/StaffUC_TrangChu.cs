@@ -37,32 +37,17 @@ namespace QuanLyCuaHangQuanAo2._0
 
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {
-            StaffForm a = LayFormCha();
-            if(a.ucTaoHoaDon == null)
-            {
-                a.ucTaoHoaDon = new UC_TaoHoaDon();
-            }
-            MoUC(a.ucTaoHoaDon, sender, e);
+            MoUC(new UC_TaoHoaDon(), sender, e);
         }
 
         private void btnThongKeSP_Click(object sender, EventArgs e)
         {
-            StaffForm a = LayFormCha();
-            if(a.ucThongKeDT==null)
-            {
-                a.ucThongKeDT = new UC_ThongKeDoanhThu();
-            }
-            MoUC(a.ucThongKeDT, sender, e);
+            MoUC(new UC_ThongKeDoanhThu(), sender, e);
         }
 
         private void btnThongKeHD_Click(object sender, EventArgs e)
         {
-            StaffForm a = LayFormCha();
-            if(a.ucThongKeHD==null)
-            {
-                a.ucThongKeHD = new UC_ThongKeHoaDon();
-            }
-            MoUC(a.ucThongKeHD, sender, e);
+            MoUC(new UC_ThongKeHoaDon(), sender, e);
         }
     }
 }

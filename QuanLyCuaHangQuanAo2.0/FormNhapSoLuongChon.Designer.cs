@@ -1,7 +1,7 @@
 ﻿
 namespace QuanLyCuaHangQuanAo2._0
 {
-    partial class NhapSoLuongChon
+    partial class FormNhapSoLuongChon
     {
         /// <summary>
         /// Required designer variable.

@@ -1,15 +1,8 @@
-﻿using BaiTapLon.BUS;
-using BaiTapLon.DAO;
-using BTL_QuanLyKhoHang_Nhom20;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyCuaHangQuanAo2._0.BUS;
+using QuanLyCuaHangQuanAo2._0.DTO;
 
 namespace QuanLyCuaHangQuanAo2._0
 {
@@ -35,10 +28,11 @@ namespace QuanLyCuaHangQuanAo2._0
             List<Product> data = ProductBUS.Instance.GetAllProducts();
             foreach (Product p in data)
             {
-                if (!p.Is_deleted)
-                    dataGridView1.Rows.Add(false, p.Product_id, p.Product_name, p.Category_name, p.Product_size, p.Product_sellingPrice, p.Product_importPrice, p.Product_stockQuantity, "");
+                dataGridView1.Rows.Add(false, p.Product_id, p.Product_name, p.Category_name,
+                                       p.Product_size, p.Product_sellingPrice,
+                                       p.Product_importPrice,
+                                       p.Product_stockQuantity, "");
             }
-
         }
 
         private void btTimKiem_Click(object sender, EventArgs e)
@@ -49,10 +43,11 @@ namespace QuanLyCuaHangQuanAo2._0
             dataGridView1.Rows.Clear();
             foreach (Product p in results)
             {
-                dataGridView1.Rows.Add(false, p.Product_id, p.Product_name, p.Category_name, p.Product_size, p.Product_sellingPrice, p.Product_stockQuantity, "");
+                dataGridView1.Rows.Add(false, p.Product_id, p.Product_name, p.Category_name,
+                                       p.Product_size, p.Product_sellingPrice, p.Product_importPrice,
+                                       p.Product_stockQuantity, "");
             }
         }
-        DataTable ChonThanhToan = new DataTable();
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -72,9 +67,14 @@ namespace QuanLyCuaHangQuanAo2._0
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
                 if (isChecked)
                 {
-                    NhapSoLuongChon slc = new NhapSoLuongChon();
-                    string tenSP = row.Cells[2].Value.ToString();
                     int soluongton = Convert.ToInt32(row.Cells[7].Value);
+                    if (soluongton <= 0)
+                    {
+                        MessageBox.Show("Hàng không có sẵn");
+                        return;
+                    }
+                    FormNhapSoLuongChon slc = new FormNhapSoLuongChon();
+                    string tenSP = row.Cells[2].Value.ToString();
                     slc.soluongton = soluongton;
                     slc.tenSP = tenSP;
                     slc.ShowDialog();
@@ -171,22 +171,22 @@ namespace QuanLyCuaHangQuanAo2._0
                     p.Product_id = Convert.ToInt32(row.Cells[1].Value);
                     p.Product_name = row.Cells[2].Value.ToString();
                     p.Is_deleted = false;
+                    p.Category_name = row.Cells[3].Value.ToString();
                     p.Product_size = row.Cells[4].Value.ToString();
                     p.Product_sellingPrice = Convert.ToInt32(row.Cells[5].Value);
                     p.Product_importPrice = Convert.ToInt32(row.Cells[6].Value);
                     p.Product_stockQuantity = Convert.ToInt32(row.Cells[7].Value);
                     sua.Close();
-                    /*
-                    // sua trong co so du lieu
+
                     if (ProductBUS.Instance.UpdateProduct(p))
                     {
                         MessageBox.Show("Dữ liệu sửa thành công");
+                        this.ManagerUC_SanPham_Load(sender,e);
                     }
                     else
                     {
                         MessageBox.Show("Dữ liệu sửa thất bại");
                     }
-                    */
                 }
             }
         }
@@ -199,6 +199,33 @@ namespace QuanLyCuaHangQuanAo2._0
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormThemSanPham frmThem = new FormThemSanPham();
+            frmThem.ShowDialog();
+
+            if (frmThem.Tag != null && frmThem.Tag.ToString() == "1")
+            {
+                Product p = new Product();
+                p.Product_name = frmThem.TenSP;
+                p.Category_name = frmThem.Loai;
+                p.Product_size = frmThem.size;
+                p.Product_sellingPrice = Convert.ToInt32(frmThem.GiaBan);
+                p.Product_importPrice = Convert.ToInt32(frmThem.giaNhap);
+                p.Product_stockQuantity = Convert.ToInt32(frmThem.soluongton);
+                p.Is_deleted = false;
+                if (ProductBUS.Instance.InsertProduct(p)) 
+                {
+                    MessageBox.Show("Thêm sản phẩm mới thành công!");
+                    ManagerUC_SanPham_Load(sender, e); 
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi lưu vào cơ sở dữ liệu!");
+                }
+            }
         }
     }
 }

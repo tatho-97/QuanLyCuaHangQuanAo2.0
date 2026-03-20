@@ -113,31 +113,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\CategoryBUS.cs" />
     <Compile Include="BUS\CustomerBUS.cs" />
     <Compile Include="BUS\EmployeeBUS.cs" />
+    <Compile Include="BUS\OrderBUS.cs" />
     <Compile Include="BUS\ProductBUS.cs" />
     <Compile Include="BUS\RoleBUS.cs" />
     <Compile Include="BUS\SupplierBUS.cs" />
-    <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\CustomerDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\EmployeeDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
+    <Compile Include="DAO\OrderDetailDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\SupplierDAO.cs" />
-    <Compile Include="DTO\Category.cs" />
     <Compile Include="DTO\Customer.cs" />
     <Compile Include="DTO\Employee.cs" />
+    <Compile Include="DTO\order.cs" />
+    <Compile Include="DTO\OrderDetail.cs" />
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\Role.cs" />
     <Compile Include="DTO\Supplier.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="FormNhapSanPhamMoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNhapSanPhamMoi.Designer.cs">
+      <DependentUpon>FormNhapSanPhamMoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSanPhamCoSan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSanPhamCoSan.Designer.cs">
+      <DependentUpon>FormSanPhamCoSan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSuaSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormSuaSanPham.Designer.cs">
       <DependentUpon>FormSuaSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormThemSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormThemSanPham.Designer.cs">
+      <DependentUpon>FormThemSanPham.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -175,11 +195,11 @@
     <Compile Include="ManagerUC_TrangChu.Designer.cs">
       <DependentUpon>ManagerUC_TrangChu.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhapSoLuongChon.cs">
+    <Compile Include="FormNhapSoLuongChon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhapSoLuongChon.Designer.cs">
-      <DependentUpon>NhapSoLuongChon.cs</DependentUpon>
+    <Compile Include="FormNhapSoLuongChon.Designer.cs">
+      <DependentUpon>FormNhapSoLuongChon.cs</DependentUpon>
     </Compile>
     <Compile Include="Product_selected.cs" />
     <Compile Include="StaffForm.cs">
@@ -220,8 +240,17 @@
     <Compile Include="UC_ThongKeHoaDon.Designer.cs">
       <DependentUpon>UC_ThongKeHoaDon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormNhapSanPhamMoi.resx">
+      <DependentUpon>FormNhapSanPhamMoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSanPhamCoSan.resx">
+      <DependentUpon>FormSanPhamCoSan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSuaSanPham.resx">
       <DependentUpon>FormSuaSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormThemSanPham.resx">
+      <DependentUpon>FormThemSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -241,8 +270,8 @@
     <EmbeddedResource Include="ManagerUC_TrangChu.resx">
       <DependentUpon>ManagerUC_TrangChu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhapSoLuongChon.resx">
-      <DependentUpon>NhapSoLuongChon.cs</DependentUpon>
+    <EmbeddedResource Include="FormNhapSoLuongChon.resx">
+      <DependentUpon>FormNhapSoLuongChon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>

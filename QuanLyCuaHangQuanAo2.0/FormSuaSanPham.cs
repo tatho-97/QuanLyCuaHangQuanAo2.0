@@ -69,7 +69,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 a = Convert.ToInt32(textBox5.Text);
                 if (a < 1000)
                 {
-                    MessageBox.Show("Giá bán >=1000!");
+                    MessageBox.Show("Giá >=1000!");
                     textBox5.Text = giaNhap;
                     textBox5.Focus();
                     return;
@@ -147,6 +147,11 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             this.Tag = "0";
             this.Hide();
+        }
+
+        private void textBox3_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }

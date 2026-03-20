@@ -1,22 +1,24 @@
-﻿using BTL_QuanLyKhoHang_Nhom20.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using QuanLyCuaHangQuanAo2._0.DTO; 
 
-namespace BaiTapLon.DAO
+namespace QuanLyCuaHangQuanAo2._0.DAO 
 {
     internal class CustomerDAO
     {
         private static CustomerDAO instance = new CustomerDAO();
-
         public static CustomerDAO Instance { get { return instance; } }
-        public List<Customer> GetAllCategories()
+
+        private CustomerDAO() { } // 
+
+        public List<Customer> GetAllCustomers()
         {
             List<Customer> list = new List<Customer>();
-            string query = "SELECT customer_id, full_name, gender, phone_number, address FROM customers";
+
+
+            string query = "SELECT customer_id, full_name, phone_number, address FROM customers";
+
             using (SQLiteConnection conn = DataProvider.GetConnection())
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
@@ -26,21 +28,73 @@ namespace BaiTapLon.DAO
                     {
                         while (reader.Read())
                         {
-                            Customer Customer = new Customer
+                            Customer customer = new Customer
                             {
                                 Customer_id = Convert.ToInt32(reader["customer_id"]),
                                 Full_name = reader["full_name"].ToString(),
-                                Gender = reader["gender"].ToString(),
-                                Phone_number = reader["phone_number"].ToString(),
-                                Address = reader["address"].ToString()
+                                // Gender = reader["gender"].ToString(), // Bỏ nếu DB không có cột này
+                                Phone_number = reader["phone_number"]?.ToString(),
+                                Address = reader["address"]?.ToString()
                             };
 
-                            list.Add(Customer);
+                            list.Add(customer);
                         }
                     }
                 }
             }
             return list;
+        }
+        public List<Customer> SearchCustomer(string ten,string sdt)
+        {
+            List<Customer> list = new List<Customer>();
+            string query = @"SELECT customer_id, full_name, phone_number, address 
+                    FROM customers 
+                    WHERE (full_name LIKE @key1 and phone_number LIKE @key2)";
+
+            using (SQLiteConnection conn = DataProvider.GetConnection())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@key1", "%" + ten + "%");
+                    cmd.Parameters.AddWithValue("@key2", "%" + sdt + "%");
+
+
+                    using (SQLiteDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Customer
+                            {
+                                Customer_id = Convert.ToInt32(reader["customer_id"]),
+                                Full_name = reader["full_name"].ToString(),
+                                Phone_number = reader["phone_number"]?.ToString(),
+                                Address = reader["address"]?.ToString()
+                            }) ;
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+        public bool InsertCustomer(string ten,string sdt)
+        {
+            string query = @"INSERT INTO customers 
+                            (full_name,phone_number,address) 
+                            VALUES 
+                            (@name, @phone, @add)";
+
+            using (SQLiteConnection conn = DataProvider.GetConnection())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", ten);
+                    cmd.Parameters.AddWithValue("@phone", sdt);
+                    cmd.Parameters.AddWithValue("@add", "");
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
         }
     }
 }
