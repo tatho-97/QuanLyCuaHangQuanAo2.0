@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace QuanLyCuaHangQuanAo2._0.DTO
 {
-    public abstract class User
+    public class User
     {
         public string Full_name { get; set; } //
         public string Phone_number { get; set; } //

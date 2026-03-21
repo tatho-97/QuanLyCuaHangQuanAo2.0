@@ -8,6 +8,7 @@ namespace QuanLyCuaHangQuanAo2._0.DAO
 
         public static SQLiteConnection GetConnection()
         {
+            string connectionString = @"Data Source=.\QuanLyCuaHangQuanAo.db;Version=3;";
             return new SQLiteConnection(connectionString);
         }
     }

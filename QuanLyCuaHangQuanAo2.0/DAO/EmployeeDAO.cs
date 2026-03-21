@@ -11,13 +11,73 @@ namespace QuanLyCuaHangQuanAo2._0.DAO
         public static EmployeeDAO Instance { get { return instance; } }
 
         private EmployeeDAO() { }
+        public bool UpdateEmployee(Employee employee)
+        {
+            string query = @"UPDATE employees SET 
+                    role_id = @roleId, 
+                    full_name = @fullName, 
+                    phone_number = @phone, 
+                    username = @username, 
+                    password_hash = @password, 
+                    is_deleted = @isDeleted 
+                    WHERE employee_id = @id";
+
+            using (SQLiteConnection conn = DataProvider.GetConnection())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", employee.Employee_id);
+                    cmd.Parameters.AddWithValue("@roleId", employee.Role_id);
+                    cmd.Parameters.AddWithValue("@fullName", employee.Full_name);
+                    cmd.Parameters.AddWithValue("@phone", employee.Phone_number);
+                    cmd.Parameters.AddWithValue("@username", employee.Username);
+                    cmd.Parameters.AddWithValue("@password", employee.Password_hash);
+                    int giaTriLuu;
+                    if (employee.Is_deleted == true)
+                        giaTriLuu = 1;
+                    else
+                        giaTriLuu = 0;
+                    cmd.Parameters.AddWithValue("@isDeleted", giaTriLuu);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+        public int InsertEmployee(Employee obj)
+        {
+            int employeeId = -1;
+            string query = @"INSERT INTO employees (role_id, full_name, phone_number, username, password_hash, is_deleted) 
+                    VALUES (@roleId, @fullName, @phone, @username, @password, 0);
+                    SELECT last_insert_rowid();";
+
+            using (SQLiteConnection conn = DataProvider.GetConnection())
+            {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@roleId", obj.Role_id);
+                    cmd.Parameters.AddWithValue("@fullName", obj.Full_name);
+                    cmd.Parameters.AddWithValue("@phone", obj.Phone_number);
+                    cmd.Parameters.AddWithValue("@username", obj.Username);
+                    cmd.Parameters.AddWithValue("@password", obj.Password_hash);
+
+                    conn.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        employeeId = Convert.ToInt32(result);
+                    }
+                    conn.Close();
+                }
+            }
+            return employeeId;
+        }
         public List<Employee> SearchEmployee(string searchType, string keyword)
         {
             List<Employee> list = new List<Employee>();
             string query = @"SELECT employee_id, role_id, full_name, username, 
                             password_hash, phone_number, is_deleted 
                      FROM employees 
-                     WHERE is_deleted = 0 AND ";
+                     WHERE ";
 
             switch (searchType)
             {
@@ -72,8 +132,7 @@ namespace QuanLyCuaHangQuanAo2._0.DAO
             List<Employee> list = new List<Employee>();
             string query = @"SELECT employee_id, role_id, full_name, username, 
                              password_hash, phone_number, is_deleted 
-                             FROM employees 
-                             WHERE is_deleted = 0";
+                             FROM employees ";
 
             using (SQLiteConnection conn = DataProvider.GetConnection())
             {

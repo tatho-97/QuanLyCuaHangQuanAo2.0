@@ -19,10 +19,10 @@ namespace QuanLyCuaHangQuanAo2._0.BUS
         {
             return ProductDAO.Instance.GetAllProducts();
         }
-        public bool InsertProduct(Product product)
+        public int InsertProduct(Product product)
         {
-            if (string.IsNullOrEmpty(product.Product_name)) return false;
-            if (product.Product_sellingPrice < 0) return false;
+            if (string.IsNullOrEmpty(product.Product_name)) return -1;
+            if (product.Product_sellingPrice < 0) return -1;
 
             return ProductDAO.Instance.InsertProduct(product);
         }

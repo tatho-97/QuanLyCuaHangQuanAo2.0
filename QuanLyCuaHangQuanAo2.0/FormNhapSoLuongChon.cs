@@ -42,7 +42,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 textBox1.Focus();
                 return;
             }
-            if(a==0)
+            if(a<=0)
             {
                 MessageBox.Show("Chọn >0");
                 textBox1.Clear();

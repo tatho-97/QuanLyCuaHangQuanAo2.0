@@ -11,7 +11,7 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             InitializeComponent();
         }
-        public List<Product_selected> list =new List<Product_selected>();
+        public List<Product> list = new List<Product>(); 
         private void FormSanPhamCoSan_Load(object sender, EventArgs e)
         {
             
@@ -20,13 +20,13 @@ namespace QuanLyCuaHangQuanAo2._0
             foreach (Product p in data)
             {
                 if (!p.Is_deleted)
-                    dataGridView1.Rows.Add( p.Product_id, p.Product_name, p.Category_name, p.Product_size, p.Product_sellingPrice, p.Product_importPrice, p.Product_stockQuantity, "0");
+                    dataGridView1.Rows.Add( p.Product_id, p.Product_name, p.Category_name, p.Product_size, p.Product_sellingPrice, p.Product_importPrice, "0");
             }
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            var cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            var cell = dataGridView1.Rows[e.RowIndex].Cells[6];
             try
             {
                int val = Convert.ToInt32(cell.Value);
@@ -59,17 +59,17 @@ namespace QuanLyCuaHangQuanAo2._0
             {
                 if (Convert.ToInt32(row.Cells[6].Value)>0)
                 {
-                    Product_selected pd = new Product_selected();
-                    pd.MaSP = row.Cells[0].Value.ToString();
-                    pd.TenSP = row.Cells[1].Value.ToString();
-                    pd.Loai = row.Cells[2].Value.ToString();
-                    pd.Size = row.Cells[3].Value.ToString();
-                    pd.GiaBan = Convert.ToInt32(row.Cells[4].Value);
-                    pd.GiaNhap = Convert.ToInt32(row.Cells[5].Value);
-                    pd.SoLuongChon = Convert.ToInt32(row.Cells[6].Value);
+                    Product pd = new Product();
+                    pd.Product_id = Convert.ToInt32( row.Cells[0].Value.ToString() );
+                    pd.Product_name = row.Cells[1].Value.ToString();
+                    pd.Category_name = row.Cells[2].Value.ToString();
+                    pd.Product_size = row.Cells[3].Value.ToString();
+                    pd.Product_sellingPrice = Convert.ToInt32(row.Cells[4].Value);
+                    pd.Product_importPrice = Convert.ToInt32(row.Cells[5].Value);
+                    // su dung stock quantity- so luong ton de luu so luong nhap
+                    pd.Product_stockQuantity = Convert.ToInt32(row.Cells[6].Value);
                     list.Add(pd);
                 }
-                this.Hide();
             }
             if(list.Count>0)
             {

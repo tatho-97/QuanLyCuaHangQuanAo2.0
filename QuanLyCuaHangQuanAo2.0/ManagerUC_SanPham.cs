@@ -216,7 +216,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 p.Product_importPrice = Convert.ToInt32(frmThem.giaNhap);
                 p.Product_stockQuantity = Convert.ToInt32(frmThem.soluongton);
                 p.Is_deleted = false;
-                if (ProductBUS.Instance.InsertProduct(p)) 
+                if (ProductBUS.Instance.InsertProduct(p)!=-1) 
                 {
                     MessageBox.Show("Thêm sản phẩm mới thành công!");
                     ManagerUC_SanPham_Load(sender, e); 

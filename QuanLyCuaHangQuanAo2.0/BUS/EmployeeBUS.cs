@@ -14,7 +14,14 @@ namespace QuanLyCuaHangQuanAo2._0.BUS
         }
 
         private EmployeeBUS() { }
-
+        public int CreateEmployee(Employee obj)
+        {
+            if (obj.Username=="" || obj.Full_name=="")
+            {
+                return -1;
+            }
+            return EmployeeDAO.Instance.InsertEmployee(obj);
+        }
         public List<Employee> GetAllEmployee()
         {
             return EmployeeDAO.Instance.GetAllEmployee();
@@ -27,6 +34,13 @@ namespace QuanLyCuaHangQuanAo2._0.BUS
                 return GetAllEmployee();
             }
             return EmployeeDAO.Instance.SearchEmployee(searchType, keyword);
+        }
+        public bool UpdateEmployee(Employee e)
+        {
+            if (e.Employee_id <= 0) return false;
+            if (string.IsNullOrEmpty(e.Full_name)) return false;
+
+            return EmployeeDAO.Instance.UpdateEmployee(e);
         }
     }
 }

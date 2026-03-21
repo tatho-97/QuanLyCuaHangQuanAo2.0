@@ -53,7 +53,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 Employee Emp = null;
                 foreach (Employee emp in list)
                 {
-                    if (emp.Username == textBox1.Text && emp.Password_hash == textBox2.Text)
+                    if (emp.Username == textBox1.Text && emp.Password_hash == textBox2.Text&& emp.Is_deleted==false)
                     {
                         Emp = emp;
                         break;
@@ -67,6 +67,7 @@ namespace QuanLyCuaHangQuanAo2._0
                         ManagerForm quanly = new ManagerForm();
                         quanly.id = Emp.Employee_id;
                         quanly.ten = Emp.Full_name;
+                        quanly.emp = Emp;
                         this.Hide();
                         quanly.ShowDialog();
                         this.Close();

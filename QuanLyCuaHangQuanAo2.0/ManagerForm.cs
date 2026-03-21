@@ -28,7 +28,7 @@ namespace QuanLyCuaHangQuanAo2._0
         {
             return btnTaoHoaDon;
         }
-        
+        public Employee emp;
         public void chonUC(UserControl uc, object sender, EventArgs e)
         {
             uc.Dock = DockStyle.Fill;

@@ -45,8 +45,6 @@ namespace QuanLyCuaHangQuanAo2._0
                     MessageBox.Show("Cảnh báo: Giá nhập đang lớn hơn hoặc bằng giá bán!");
 
                 }
-
-
                 TenSP = textBox1.Text.Trim();
                 Loai = textBox2.Text.Trim();
                 size = textBox3.Text.Trim(); 

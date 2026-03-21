@@ -45,15 +45,19 @@ namespace QuanLyCuaHangQuanAo2._0.DAO
             return list;
         }
 
-        public bool InsertProduct(Product product)
+        public int InsertProduct(Product product)
         {
+            int productId = -1;
+
+            // Thêm SELECT last_insert_rowid() để lấy ID vừa tự động tăng
             string query = @"INSERT INTO products 
-                            (product_name, category_name, product_size, 
-                             product_sellingPrice, product_importPrice, product_stockQuantity, 
-                             is_deleted, is_selected) 
-                            VALUES 
-                            (@name, @category, @size, 
-                             @sell, @import, @stock, 0, 0)";
+                    (product_name, category_name, product_size, 
+                     product_sellingPrice, product_importPrice, product_stockQuantity, 
+                     is_deleted, is_selected) 
+                    VALUES 
+                    (@name, @category, @size, 
+                     @sell, @import, @stock, 0, 0);
+                    SELECT last_insert_rowid();";//lay dong insert gan nhat
 
             using (SQLiteConnection conn = DataProvider.GetConnection())
             {
@@ -65,10 +69,19 @@ namespace QuanLyCuaHangQuanAo2._0.DAO
                     cmd.Parameters.AddWithValue("@sell", product.Product_sellingPrice);
                     cmd.Parameters.AddWithValue("@import", product.Product_importPrice);
                     cmd.Parameters.AddWithValue("@stock", product.Product_stockQuantity);
+
                     conn.Open();
-                    return cmd.ExecuteNonQuery() > 0;
+
+                    // Dùng ExecuteScalar để lấy giá trị ID trả về ở dòng cuối cùng
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        productId = Convert.ToInt32(result);
+                    }
                 }
             }
+
+            return productId;
         }
 
         public bool UpdateProduct(Product product)
