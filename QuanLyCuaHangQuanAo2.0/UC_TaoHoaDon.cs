@@ -138,7 +138,7 @@ namespace QuanLyCuaHangQuanAo2._0
                     foreach (Product_selected pd in f.product_Selecteds)
                     {
                         int updatedStock = pd.SoLuongTon - pd.SoLuongChon;
-
+                        
                         Product p = new Product();
                         p.Product_id = Convert.ToInt32(pd.MaSP);
                         p.Product_name = pd.TenSP;
@@ -163,6 +163,7 @@ namespace QuanLyCuaHangQuanAo2._0
 
                     OrderBUS.Instance.ProcessFullPayment(invoice, list_odt);
                     MessageBox.Show("Thanh toán thành công!");
+                    
                     button2_Click(sender, e);
                 }
             }
@@ -231,14 +232,17 @@ namespace QuanLyCuaHangQuanAo2._0
             {
                 ManagerForm f = (ManagerForm)currentForm;
                 f.ucSanPham = new ManagerUC_SanPham();
+                f.product_Selecteds.Clear();
                 MessageBox.Show("Sản phẩm chọn đã được xóa!");
             }
             else if (currentForm is StaffForm)
             {
                 StaffForm f = (StaffForm)currentForm;
                 f.ucSanPham = new StaffUC_SanPham();
+                f.product_Selecteds.Clear();
                 MessageBox.Show("Sản phẩm chọn đã được xóa!");
             }
+            
             dataGridView1.Rows.Clear();
             textBox1.Text = "";
             textBox3.Text = "";

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using QuanLyCuaHangQuanAo2._0.BUS;
 using QuanLyCuaHangQuanAo2._0.DTO;
-
+using System.Data;
 namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class ManagerUC_SanPham : UserControl
@@ -153,6 +153,7 @@ namespace QuanLyCuaHangQuanAo2._0
                 sua.GiaBan = row.Cells[5].Value.ToString();
                 sua.giaNhap = row.Cells[6].Value.ToString();
                 sua.soluongton = row.Cells[7].Value.ToString();
+
                 sua.ShowDialog();
                 // lay thay doi
                 if (sua.Tag.ToString() == "0")

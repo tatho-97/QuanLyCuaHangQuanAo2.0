@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using QuanLyCuaHangQuanAo2._0.DTO;
+using QuanLyCuaHangQuanAo2._0.DAO;
 namespace QuanLyCuaHangQuanAo2._0
 {
     public partial class FormThemSanPham : Form
@@ -22,9 +23,10 @@ namespace QuanLyCuaHangQuanAo2._0
         public string GiaBan;
         public string giaNhap;
         public string soluongton;
+        public List<Product> list;
         private void FormThemSanPham_Load(object sender, EventArgs e)
         {
-
+            list = ProductDAO.Instance.GetAllProducts();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,7 +53,17 @@ namespace QuanLyCuaHangQuanAo2._0
                 GiaBan = giaB.ToString();
                 giaNhap = giaN.ToString();
                 soluongton = soLuong.ToString();
-
+                if (list.Count > 0)
+                {
+                    foreach (Product p in list)
+                    {
+                        if (p.Product_name == TenSP && p.Category_name==Loai &&p.Product_size==size)
+                        {
+                            MessageBox.Show("Không được nhập trùng sản phẩm ! ");
+                            return;
+                        }
+                    }
+                }
                 this.Tag = "1";
                 this.DialogResult = DialogResult.OK;
                 this.Close();

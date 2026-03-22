@@ -18,6 +18,7 @@ namespace QuanLyCuaHangQuanAo2._0
         Dictionary<string, Product> product_moi = new Dictionary<string, Product>();
         private void ManagerUC_NhapSP_Load(object sender, EventArgs e)
         {
+
         }
         public int id = 0;
         private void NhapSanPhamMoi(object sender, EventArgs e)
